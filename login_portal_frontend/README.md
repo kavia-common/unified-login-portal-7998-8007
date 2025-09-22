@@ -1,82 +1,65 @@
-# Lightweight React Template for KAVIA
+# Rainbow Burst Login Portal Frontend
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A playful, vibrant React web app for authentication, user profile management, and security settings. Built with React Router, custom CSS, and a delightful Rainbow Burst theme.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Responsive layout with Sidebar + Topbar + Main content
+- OAuth login placeholders: Google, GitHub, Facebook
+- Email/password login and signup (placeholder)
+- Profile page: view/edit user info
+- Security page: password change, sessions, connected providers, 2FA setup placeholder
+- Organized structure: components, pages, theme, utils, routing
+- .env.example for required environment variables
+- No heavy UI frameworks; handcrafted CSS design
 
 ## Getting Started
 
-In the project directory, you can run:
+1) Install dependencies
+   npm install
 
-### `npm start`
+2) Configure environment
+   Copy .env.example to .env and update values.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3) Run the app
+   npm start
 
-### `npm test`
+4) Build for production
+   npm run build
 
-Launches the test runner in interactive watch mode.
+## Environment Variables
 
-### `npm run build`
+See .env.example. Important keys:
+- REACT_APP_API_BASE_URL: Backend API origin for auth endpoints
+- REACT_APP_SITE_URL: App URL used for redirect configuration
+- REACT_APP_GOOGLE_CLIENT_ID, REACT_APP_GITHUB_CLIENT_ID, REACT_APP_FACEBOOK_APP_ID: client IDs (typically backend handles OAuth, but include here for reference)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Code Structure
 
-## Customization
+- src/components/layout: Sidebar and Topbar for the app shell
+- src/pages: Login, Dashboard, Profile, Security, Settings
+- src/theme/ThemeContext.jsx: Theme toggler and context
+- src/utils/api.js: Placeholder REST API integration
+- src/utils/auth.js: Simple auth context (in-memory)
 
-### Colors
+## Wiring OAuth and REST
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+- Replace placeholder methods in src/utils/api.js with real network calls to your backend (e.g., fetch or axios).
+- Common flows:
+  - OAuth: redirect to `${API_BASE}/auth/{provider}` then handle callback to set session cookie; fetch current user from `${API_BASE}/me`.
+  - Email/password: POST to `${API_BASE}/auth/login` and `${API_BASE}/auth/signup`.
+  - Profile: PATCH `${API_BASE}/me`.
+  - Security: POST `${API_BASE}/me/password`, POST `${API_BASE}/me/2fa/start`, GET/DELETE `${API_BASE}/me/sessions`.
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+## Style Guide
 
-### Components
+Rainbow Burst palette:
+- Primary: #EC4899
+- Secondary: #8B5CF6
+- Success: #10B981
+- Error: #EF4444
+- Background: #FDF2F8
+- Surface: #FFFFFF
+- Text: #374151
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Enjoy the playful gradients, rounded corners, and energetic UI! 🌈
